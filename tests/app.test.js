@@ -191,7 +191,7 @@ describe("Homework 1 Tests", () => {
     const productToSearch = db
       .insert(product)
       .values({
-        name: "Test",
+        name: "Testing Something",
         image_url: "http://localhost:3000/public/placeholder.png",
       })
       .returning()
