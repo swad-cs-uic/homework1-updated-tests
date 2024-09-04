@@ -187,6 +187,17 @@ describe("Homework 1 Tests", () => {
   });
 
   it("(5pts) should search for a product and display the results", async () => {
+    // Add the product we want to search for to the db 
+    const productToSearch = db
+      .insert(product)
+      .values({
+        name: "Test",
+        image_url: "http://localhost:3000/public/placeholder.png",
+      })
+      .returning()
+      .get();
+    addedProductIds.push(productToSearch.id);
+
     const res = await app.request("/?query=Test");
     const html = await res.text();
     document.body.innerHTML = html;
